@@ -1,0 +1,23 @@
+.Navbar {
+  background-color: white;
+  border-bottom: 5px solid grey;
+}
+
+.Navbar > .logo {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 100px;
+  color: grey;
+}
+
+.Navbar > .nav {
+  margin: 0;
+  padding: 0;
+}
+
+.Navbar > .item {
+  margin: 0;
+  padding: 10px;
+  display: inline-block;
+  color: aquamarine;
+}
