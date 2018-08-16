@@ -8,7 +8,7 @@ class AddProperty extends React.Component {
       fields: {
         title: '',
         price: '',
-        location: '',
+        location: 'Manchester',
         email: '',
       },
     };
@@ -23,7 +23,8 @@ class AddProperty extends React.Component {
   handleFieldChange = event => {
     this.setState({
       fields: {
-        [event.target.name]: event.target.value,
+        ...this.state.fields,
+        [event.target.title]: event.target.value,
       },
     });
   };

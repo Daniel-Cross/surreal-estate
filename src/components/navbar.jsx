@@ -6,7 +6,7 @@ const Navbar = ({}) => (
   <div className="Navbar">
     <div className="logo">
       <i className="fas fa-globe-americas" />
-      SURREAL ESTATE
+      <span className="header">Surreal Estate</span>
     </div>
     <div className="nav">
       <ul>
