@@ -7,8 +7,11 @@ class AddProperty extends React.Component {
     this.state = {
       fields: {
         title: '',
+        type: 'Flat',
+        city: 'Manchester',
+        bedrooms: '1',
+        bathrooms: '1',
         price: '',
-        location: 'Manchester',
         email: '',
       },
     };
@@ -24,7 +27,7 @@ class AddProperty extends React.Component {
     this.setState({
       fields: {
         ...this.state.fields,
-        [event.target.title]: event.target.value,
+        [event.target.name]: event.target.value,
       },
     });
   };
@@ -35,48 +38,44 @@ class AddProperty extends React.Component {
         <form onSubmit={this.handleAddProperty}>
           <label className="title">
             Title:
-            <input type="text" value={this.state.fields.title} onChange={this.handleFieldChange} />
+            <input type="text" name="title" value={this.state.fields.title} onChange={this.handleFieldChange} />
           </label>
           <label className="type">
             Type of Property:
-            <select type="home-list" form="house-form">
-              <option value="house">House</option>
-              <option value="apartment">Apartment</option>
+            <select name="type" value={this.state.fields.type} onChange={this.handleFieldChange}>
+              <option value="flat">Flat</option>
+              <option value="detached">Detached</option>
+              <option value="semi-detached">Semi-Detached</option>
+              <option value="terraced">Terraced</option>
+              <option value="end-of-terrace">End of Terrace</option>
+              <option value="cottage">Cottage</option>
               <option value="bungalow">Bungalow</option>
-              <option value="other">Other</option>
+            </select>
+          </label>
+          <label className="city">
+            Location:
+            <select name="city" value={this.state.fields.city} onChange={this.handleFieldChange}>
+              <option value="manchester">Manchester</option>
+              <option value="leeds">Leeds</option>
+              <option value="sheffield">Sheffield</option>
+              <option value="liverpool">Liverpool</option>
             </select>
           </label>
           <label className="bedrooms">
             Number of Bedrooms:
-            <select type="bedrooms" form="bedroom-form">
-              <option value="studio">Studio</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="+4">>4</option>
-            </select>
+            <input type="number" name="bedrooms" value={this.state.fields.bedrooms} onChange={this.handleFieldChange} />
           </label>
           <label className="bathrooms">
             Number of Bathrooms:
-            <select type="bathrooms" form="bathroom-form">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="3">>3</option>
-            </select>
+            <input type="number" name="bathrooms" value={this.state.fields.bathrooms} onChange={this.handleFieldChange} />
           </label>
           <label className="price">
-            Value of Property:
-            <input type="text" value={this.state.price} onChange={this.handleChange} />
-          </label>
-          <label className="location">
-            Location:
-            <input type="text" value={this.state.location} onChange={this.handleChange} />
+            Price (£):
+            <input type="number" name="price" value={this.state.fields.price} onChange={this.handleFieldChange} />
           </label>
           <label className="email">
-            Email:
-            <input type="text" value={this.state.email} onChange={this.handleChange} />
+            Email Address:
+            <input type="email" name="email" value={this.state.fields.email} onChange={this.handleFieldChange} />
           </label>
           <button type="submit" value="Add">Add</button>
         </form>
