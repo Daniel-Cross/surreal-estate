@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/add-property.css';
 import axios from 'axios';
+import Alert from './alert';
 
 class AddProperty extends React.Component {
   constructor() {
@@ -10,25 +11,44 @@ class AddProperty extends React.Component {
         title: '',
         type: 'Flat',
         city: 'Manchester',
-        bedrooms: '1',
-        bathrooms: '1',
-        price: '',
+        bedrooms: '0',
+        bathrooms: '0',
+        price: '0',
         email: '',
+        alertMessage: '',
+        isSuccess: false,
+        isError: false,
       },
     };
   }
 
   handleAddProperty = event => {
     event.preventDefault();
+    this.setState({
+      alertMessage: '',
+      isSuccess: false,
+      isError: false,
+    });
+    console.log(this.state.fields);
 
-    axios.post('http://localhost:3000/api/v1/PropertyListing', {
-      title: this.state.title,
+    axios.post(
+      'http://localhost:3000/api/v1/PropertyListing',
+      /* title: this.state.title,
       type: this.state.type,
       city: this.state.city,
       bedrooms: this.state.bedrooms,
       bathrooms: this.state.bathrooms,
       price: this.state.price,
-      email: this.state.email,
+      email: this.state.email, */
+      this.state.fields
+    ).then(() => this.setState({
+      isSuccess: true,
+      alertMessage: 'Property added.',
+    })).catch((err) => {
+      this.setState({
+        alertMessage: 'Server error. Please try again later',
+        isError: true,
+      });
     });
   };
 
@@ -45,6 +65,8 @@ class AddProperty extends React.Component {
     return (
       <div className="AddProperty">
         <form onSubmit={this.handleAddProperty}>
+          {this.state.isSuccess && <Alert message={this.state.alertMessage} success />}
+          {this.state.isError && <Alert message={this.state.alertMessage} />}
           <label className="title">
             Title:
             <input type="text" name="title" value={this.state.fields.title} onChange={this.handleFieldChange} />

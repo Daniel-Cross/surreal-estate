@@ -9,7 +9,6 @@ const App = ({}) => (
   <Router>
     <div className="App">
       <Navbar />
-
       <Switch>
         <Route exact path="/" component={Properties} />
         <Route exact path="/add-property" component={AddProperty} />

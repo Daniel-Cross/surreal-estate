@@ -1,0 +1,9 @@
+.Alert {
+  border: 1px solid red;
+  background-color: #ff9999;
+}
+
+.success {
+  border: 1px solid green;
+  background-color: #99ff99;
+}
