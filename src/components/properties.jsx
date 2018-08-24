@@ -1,8 +1,9 @@
 import React from 'react';
+import PropertyCard from './property-card';
 
 const Properties = ({}) => (
   <div>
-    Properties Page
+    <PropertyCard />
   </div>
 );
 

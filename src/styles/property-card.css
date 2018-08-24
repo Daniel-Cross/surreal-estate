@@ -1,0 +1,70 @@
+.property-card {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.title {
+  font-weight: bold;
+  padding: 10px;
+}
+
+.type {
+  font-style: italic;
+  padding: 10px;
+}
+
+.bathrooms {
+  padding: 10px;
+}
+
+.bedrooms {
+  padding: 10px;
+}
+
+.price {
+  padding: 10px;
+}
+
+.houses {
+  width: 100%;
+  background-color: black;
+  background-position: center;
+  height: 250px;
+}
+
+.bathroom-props {
+  margin: 0 0 0 15px;
+}
+
+.bedroom-props {
+  margin: 0 0 0 15px;
+}
+
+.price-props {
+  margin: 0 0 0 25px;
+}
+
+.bathrooms {
+  font-size: 20px;
+}
+
+.price {
+  font-size: 20px;
+}
+
+.bedrooms {
+  font-size: 20px;
+}
+
+.hero {
+  background-color: #E0E0E0;
+  font-size: 30px;
+  color: darkgray;
+  text-align: center;
+  padding: 50px;
+}
