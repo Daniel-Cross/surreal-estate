@@ -44,7 +44,7 @@ class AddProperty extends React.Component {
     ).then(() => this.setState({
       isSuccess: true,
       alertMessage: 'Property added.',
-    })).catch((err) => {
+    })).catch(() => {
       this.setState({
         alertMessage: 'Server error. Please try again later',
         isError: true,
@@ -86,10 +86,10 @@ class AddProperty extends React.Component {
           <label className="city">
             Location:
             <select name="city" value={this.state.fields.city} onChange={this.handleFieldChange}>
-              <option value="manchester">Manchester</option>
-              <option value="leeds">Leeds</option>
-              <option value="sheffield">Sheffield</option>
-              <option value="liverpool">Liverpool</option>
+              <option value="Manchester">Manchester</option>
+              <option value="Leeds">Leeds</option>
+              <option value="Sheffield">Sheffield</option>
+              <option value="Liverpool">Liverpool</option>
             </select>
           </label>
           <label className="bedrooms">

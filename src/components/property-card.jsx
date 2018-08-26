@@ -8,12 +8,12 @@ const PropertyCard = (props) => (
     </div>
     <div className="title">
       <span>
-        uewygsdjhb{props.title}
+        {props.title}
       </span>
     </div>
     <div className="type">
       <span>
-        {props.type}wlkejbsadkjbsa - wlkejbsadkjbsa{props.city}
+        {props.type} - {props.city}
       </span>
     </div>
     <div className="bathrooms">
@@ -21,7 +21,7 @@ const PropertyCard = (props) => (
         <i className="fas fa-bath" />
       </span>
       <span className="bathroom-props">
-        kjewsabdc{props.bathrooms}
+        {props.bathrooms}
       </span>
     </div>
     <div className="bedrooms">
@@ -29,7 +29,7 @@ const PropertyCard = (props) => (
         <i className="fas fa-bed" />
       </span>
       <span className="bedroom-props">
-        lwkensdalkcn{props.bedrooms}
+        {props.bedrooms}
       </span>
     </div>
     <div className="price">
@@ -37,7 +37,7 @@ const PropertyCard = (props) => (
         <i className="fas fa-pound-sign" />
       </span>
       <span className="price-props">
-        lkendsalknc{props.price}
+        {props.price}
       </span>
     </div>
     <a href="mailto:hello@surreal-estate.com?Subject=I%20Want%20This%20Property!" target="_top">

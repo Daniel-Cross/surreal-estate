@@ -1,0 +1,10 @@
+.properties {
+  padding: 0.5em;
+}
+
+.properties > col {
+  display: inline-block;
+  width: 33.33%;
+  padding: 0.5em;
+  box-sizing: border-box;
+}
