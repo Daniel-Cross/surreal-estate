@@ -3,6 +3,7 @@ import PropertyCard from './property-card';
 import axios from 'axios';
 import '../styles/properties.css';
 import { Link } from 'react-router-dom';
+import qs from 'qs';
 
 class Properties extends React.Component {
   constructor() {
@@ -40,6 +41,18 @@ class Properties extends React.Component {
     }
   }
 
+  buildQueryString = (operation, valueObj) => {
+    const { location: { search } } = this.props;
+
+    const currentQueryParams = qs.parse(search, { ignoreQueryPrefix: true });
+    const newQueryParams = {
+      ...currentQueryParams,
+      [operation]: JSON.stringify(valueObj),
+    };
+
+    return qs.stringify(newQueryParams, { addQueryPrefix: true });
+  };
+
   render() {
     return (
       <div className="properties">
@@ -47,10 +60,12 @@ class Properties extends React.Component {
           <PropertyCard key={property._id} {...property} />
         ))}
         <div className="sidebar">
-          <Link className="manchester" to={`?query={"city": "Manchester"}`} >Manchester</Link>
-          <Link className="leeds" to={`?query={"city": "Leeds"}`}>Leeds</Link>
-          <Link className="sheffield" to={`?query={"city": "Sheffield"}`}>Sheffield</Link>
-          <Link className="liverpool" to={`?query={"city": "Liverpool"}`}>Liverpool</Link>
+          <Link className="manchester" to={this.buildQueryString('query', { city: 'Manchester' })}>Manchester</Link>
+          <Link className="leeds" to={this.buildQueryString('query', { city: 'Leeds' })}>Leeds</Link>
+          <Link className="sheffield" to={this.buildQueryString('query', { city: 'Sheffield' })}>Sheffield</Link>
+          <Link className="liverpool" to={this.buildQueryString('query', { city: 'Liverpool' })}>Liverpool</Link>
+          <Link className="price-descending"to={this.buildQueryString('sort', { price: -1 })}>Price Descending</Link>
+          <Link className="price-ascending" to={this.buildQueryString('sort', { price: +1 })}>Price Ascending</Link>
 
         </div>
       </div>
