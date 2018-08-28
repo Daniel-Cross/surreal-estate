@@ -2,9 +2,83 @@
   padding: 0.5em;
 }
 
-.properties > col {
+.properties>col {
   display: inline-block;
   width: 33.33%;
   padding: 0.5em;
   box-sizing: border-box;
+}
+
+.sorts {
+  width: 10%;
+  color: white;
+  padding: 15px 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: darkorchid;
+  justify-content: center;
+}
+
+.sort-buttons {
+  display: inline;
+}
+
+.manchester {
+  text-decoration: none;
+  color: white;
+  margin: 40px;
+}
+
+.liverpool {
+  text-decoration: none;
+  color: white;
+  margin: 40px;
+}
+
+.leeds {
+  text-decoration: none;
+  color: white;
+  margin: 40px;
+}
+
+.sheffield {
+  text-decoration: none;
+  color: white;
+  margin: 40px;
+}
+
+.price-ascending {
+    text-decoration: none;
+    color: white;
+    margin: 40px;
+}
+
+.price-descending {
+  text-decoration: none;
+  color: white;
+  margin: 40px;
+}
+
+.title-search {
+  width: 30%;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin: 20px 0 10px 380px;
+  padding: 10px;
+}
+
+.search-button {
+  width: 10%;
+  color: white;
+  padding: 5px 10px;
+  margin: 8px 0 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: darkorchid;
+  justify-content: center;
 }

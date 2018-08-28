@@ -31,25 +31,25 @@ class AddProperty extends React.Component {
     });
     console.log(this.state.fields);
 
-    axios.post(
-      'http://localhost:3000/api/v1/PropertyListing',
-      /* title: this.state.title,
+    axios
+      .post(
+        'http://localhost:3000/api/v1/PropertyListing',
+        /* title: this.state.title,
       type: this.state.type,
       city: this.state.city,
       bedrooms: this.state.bedrooms,
       bathrooms: this.state.bathrooms,
       price: this.state.price,
       email: this.state.email, */
-      this.state.fields
-    ).then(() => this.setState({
-      isSuccess: true,
-      alertMessage: 'Property added.',
-    })).catch(() => {
-      this.setState({
-        alertMessage: 'Server error. Please try again later',
-        isError: true,
+        this.state.fields
+      )
+      .then(() => this.setState({ isSuccess: true, alertMessage: 'Property added.' }))
+      .catch(() => {
+        this.setState({
+          alertMessage: 'Server error. Please try again later',
+          isError: true,
+        });
       });
-    });
   };
 
   handleFieldChange = event => {
@@ -65,15 +65,28 @@ class AddProperty extends React.Component {
     return (
       <div className="AddProperty">
         <form onSubmit={this.handleAddProperty}>
-          {this.state.isSuccess && <Alert message={this.state.alertMessage} success />}
+          {this.state.isSuccess && (
+            <Alert message={this.state.alertMessage} success />
+          )}
           {this.state.isError && <Alert message={this.state.alertMessage} />}
           <label className="title">
             Title:
-            <input type="text" name="title" value={this.state.fields.title} onChange={this.handleFieldChange} />
+            <input
+              className="title-input"
+              type="text"
+              name="title"
+              value={this.state.fields.title}
+              onChange={this.handleFieldChange}
+            />
           </label>
           <label className="type">
             Type of Property:
-            <select name="type" value={this.state.fields.type} onChange={this.handleFieldChange}>
+            <select
+              className="type-select"
+              name="type"
+              value={this.state.fields.type}
+              onChange={this.handleFieldChange}
+            >
               <option value="flat">Flat</option>
               <option value="detached">Detached</option>
               <option value="semi-detached">Semi-Detached</option>
@@ -85,7 +98,12 @@ class AddProperty extends React.Component {
           </label>
           <label className="city">
             Location:
-            <select name="city" value={this.state.fields.city} onChange={this.handleFieldChange}>
+            <select
+              className="city-select"
+              name="city"
+              value={this.state.fields.city}
+              onChange={this.handleFieldChange}
+            >
               <option value="Manchester">Manchester</option>
               <option value="Leeds">Leeds</option>
               <option value="Sheffield">Sheffield</option>
@@ -94,21 +112,47 @@ class AddProperty extends React.Component {
           </label>
           <label className="bedrooms">
             Number of Bedrooms:
-            <input type="number" name="bedrooms" value={this.state.fields.bedrooms} onChange={this.handleFieldChange} />
+            <input
+              className="bedroom-input"
+              type="number"
+              name="bedrooms"
+              value={this.state.fields.bedrooms}
+              onChange={this.handleFieldChange}
+            />
           </label>
           <label className="bathrooms">
             Number of Bathrooms:
-            <input type="number" name="bathrooms" value={this.state.fields.bathrooms} onChange={this.handleFieldChange} />
+            <input
+              className="bathroom-input"
+              type="number"
+              name="bathrooms"
+              value={this.state.fields.bathrooms}
+              onChange={this.handleFieldChange}
+            />
           </label>
           <label className="price">
             Price (£):
-            <input type="number" name="price" value={this.state.fields.price} onChange={this.handleFieldChange} />
+            <input
+              className="price-input"
+              type="number"
+              name="price"
+              value={this.state.fields.price}
+              onChange={this.handleFieldChange}
+            />
           </label>
           <label className="email">
             Email Address:
-            <input type="email" name="email" value={this.state.fields.email} onChange={this.handleFieldChange} />
+            <input
+              className="email-input"
+              type="email"
+              name="email"
+              value={this.state.fields.email}
+              onChange={this.handleFieldChange}
+            />
           </label>
-          <button type="submit" value="Add">Add</button>
+          <button className="submit" type="submit" value="Add">
+            Add
+          </button>
         </form>
       </div>
     );

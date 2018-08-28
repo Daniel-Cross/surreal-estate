@@ -12,11 +12,13 @@ class Properties extends React.Component {
       properties: [],
       isError: false,
       alertMessage: '',
+      search: '',
     };
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/api/v1/PropertyListing')
+    axios
+      .get('http://localhost:3000/api/v1/PropertyListing')
       .then(response => this.setState({ properties: response.data }))
       .catch(() => {
         this.setState({
@@ -30,7 +32,8 @@ class Properties extends React.Component {
     const { search } = this.props.location;
 
     if (prevProps.location.search !== search) {
-      axios.get(`http://localhost:3000/api/v1/PropertyListing${search}`)
+      axios
+        .get(`http://localhost:3000/api/v1/PropertyListing${search}`)
         .then(({ data: properties }) => this.setState({ properties }))
         .catch(() => {
           this.setState({
@@ -42,7 +45,9 @@ class Properties extends React.Component {
   }
 
   buildQueryString = (operation, valueObj) => {
-    const { location: { search } } = this.props;
+    const {
+      location: { search },
+    } = this.props;
 
     const currentQueryParams = qs.parse(search, { ignoreQueryPrefix: true });
     const newQueryParams = {
@@ -53,23 +58,96 @@ class Properties extends React.Component {
     return qs.stringify(newQueryParams, { addQueryPrefix: true });
   };
 
+  handleSearch = event => {
+    event.preventDefault();
+
+    const { search } = this.state;
+    const newQueryString = this.buildQueryString('query', { title: { $regex: search } });
+
+    const { history } = this.props;
+    history.push(newQueryString);
+  };
+
   render() {
     return (
-      <div className="properties">
-        {this.state.properties.map(property => (
-          <PropertyCard key={property._id} {...property} />
-        ))}
-        <div className="sidebar">
-          <Link className="manchester" to={this.buildQueryString('query', { city: 'Manchester' })}>Manchester</Link>
-          <Link className="leeds" to={this.buildQueryString('query', { city: 'Leeds' })}>Leeds</Link>
-          <Link className="sheffield" to={this.buildQueryString('query', { city: 'Sheffield' })}>Sheffield</Link>
-          <Link className="liverpool" to={this.buildQueryString('query', { city: 'Liverpool' })}>Liverpool</Link>
-          <Link className="price-descending"to={this.buildQueryString('sort', { price: -1 })}>Price Descending</Link>
-          <Link className="price-ascending" to={this.buildQueryString('sort', { price: +1 })}>Price Ascending</Link>
+      <div className="sidebar">
+        <div className="sort-buttons">
+          <Link
+            className="manchester"
+            to={this.buildQueryString('query', { city: 'Manchester' })}
+          >
+            <button className="sorts">
+            Manchester
+            </button>
+          </Link>
+          <Link
+            className="leeds"
+            to={this.buildQueryString('query', { city: 'Leeds' })}
+          >
+            <button className="sorts">
+              Leeds
+            </button>
+          </Link>
+          <Link
+            className="sheffield"
+            to={this.buildQueryString('query', { city: 'Sheffield' })}
+          >
+            <button className="sorts">
+              Sheffield
+            </button>
 
+          </Link>
+
+          <Link
+            className="liverpool"
+            to={this.buildQueryString('query', { city: 'Liverpool' })}
+          >
+            <button className="sorts">
+              Liverpool
+            </button>
+
+          </Link>
+
+          <Link
+            className="price-descending"
+            to={this.buildQueryString('sort', { price: -1 })}
+          >
+            <button className="sorts">
+              Price Descending
+            </button>
+          </Link>
+
+
+          <Link
+            className="price-ascending"
+            to={this.buildQueryString('sort', { price: +1 })}
+          >
+            <button className="sorts">
+              Price Ascending
+            </button>
+          </Link>
+          <form onSubmit={this.handleSearch}>
+            <input
+              className="title-search"
+              placeholder="Search Title..."
+              type="text"
+              value={this.state.search}
+              onChange={event => this.state({ search: event.target.value })}
+            />
+            <button
+              className="search-button"
+              type="submit"
+            >
+              <i className="fas fa-search" />
+            </button>
+          </form>
+          <div className="properties">
+            {this.state.properties.map(property => (
+              <PropertyCard key={property._id} {...property} />
+            ))}
+          </div>
         </div>
       </div>
-
     );
   }
 }

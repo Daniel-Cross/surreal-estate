@@ -2,7 +2,7 @@
   padding: 50px 100px 50px 100px;
 }
 
-input {
+.title-input {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -12,7 +12,7 @@ input {
   box-sizing: border-box;
 }
 
-select {
+.type-select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -22,7 +22,57 @@ select {
   box-sizing: border-box;
 }
 
-button {
+.city-select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.bedroom-input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.bathroom-input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.price-input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.email-input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.submit {
   width: 100%;
   color: white;
   padding: 14px 20px;
@@ -31,8 +81,6 @@ button {
   border-radius: 4px;
   cursor: pointer;
   background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
   box-shadow: 0 9px #999;
   justify-content: center;
 }
@@ -41,12 +89,16 @@ button:hover {
   background-color: #3e8e41;
 }
 
-button:active {
+.submit:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
 
+button:active {
+  transform: translateY(4px);
+}
+
 button:focus {
-  outline:none
+  outline: none
 }
