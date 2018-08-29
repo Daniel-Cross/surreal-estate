@@ -45,17 +45,19 @@ class Properties extends React.Component {
   }
 
   buildQueryString = (operation, valueObj) => {
-    const {
-      location: { search },
-    } = this.props;
+    const { location: { search } } = this.props;
 
     const currentQueryParams = qs.parse(search, { ignoreQueryPrefix: true });
+
     const newQueryParams = {
       ...currentQueryParams,
-      [operation]: JSON.stringify(valueObj),
+      [operation]: JSON.stringify({
+        ...JSON.parse(currentQueryParams[operation] || '{}'),
+        ...valueObj,
+      }),
     };
 
-    return qs.stringify(newQueryParams, { addQueryPrefix: true });
+    return qs.stringify(newQueryParams, { addQueryPrefix: true, encode: false });
   };
 
   handleSearch = event => {
@@ -77,7 +79,7 @@ class Properties extends React.Component {
             to={this.buildQueryString('query', { city: 'Manchester' })}
           >
             <button className="sorts">
-            Manchester
+              Manchester
             </button>
           </Link>
           <Link
@@ -132,7 +134,7 @@ class Properties extends React.Component {
               placeholder="Search Title..."
               type="text"
               value={this.state.search}
-              onChange={event => this.state({ search: event.target.value })}
+              onChange={event => this.setState({ search: event.target.value })}
             />
             <button
               className="search-button"
