@@ -15,7 +15,12 @@ const Navbar = props => {
       />
     );
   } else {
-    showButton = <button className="signOut">Sign Out</button>;
+    showButton = (
+      <button className="signOut">
+        <img src={props.picture} />
+        Sign Out
+      </button>
+    );
   }
 
   return (

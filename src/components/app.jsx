@@ -17,7 +17,12 @@ class App extends Component {
   }
 
   handleLogin = response => {
-    console.log(response);
+    this.setState({
+      userID: response.userID,
+      name: response.name,
+      email: response.email,
+      picture: response.picture
+    });
   };
 
   render() {
@@ -25,7 +30,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar
-            onLogin={this.handleLogin()}
+            onLogin={this.handleLogin}
             userID={this.state.userID}
             name={this.state.name}
             email={this.state.email}
