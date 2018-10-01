@@ -4,6 +4,7 @@ import axios from 'axios';
 import '../styles/properties.css';
 import { Link } from 'react-router-dom';
 import qs from 'qs';
+import config from '../config';
 
 class Properties extends React.Component {
   constructor() {
@@ -18,7 +19,7 @@ class Properties extends React.Component {
 
   componentDidMount() {
     axios
-      .get('http://localhost:3000/api/v1/PropertyListing')
+      .get(`${config.API_URL}/api/v1/PropertyListing`)
       .then(response => this.setState({ properties: response.data }))
       .catch(() => {
         this.setState({
@@ -33,7 +34,7 @@ class Properties extends React.Component {
 
     if (prevProps.location.search !== search) {
       axios
-        .get(`http://localhost:3000/api/v1/PropertyListing${search}`)
+        .get(`${config.API_URL}/api/v1/PropertyListing${search}`)
         .then(({ data: properties }) => this.setState({ properties }))
         .catch(() => {
           this.setState({
