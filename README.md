@@ -11,16 +11,16 @@ This is a React app that is similar to Zoopla or Right Move for house hunting.
 - Express.js
 - Mongoose
 
-Running the app
+**Running the app**
 
 To run this project you will need to clone it onto your local machine and install all dependencies. Navigate into the directory and install all dependencies by entering the following command on your terminal window:
 
-npm install
+`npm install`
 
 From the directory enter:
 
-npm start
+`npm start`
 
-Author
+**Author**
 
 Daniel Cross
