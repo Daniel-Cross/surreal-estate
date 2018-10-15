@@ -1,33 +1,26 @@
-# React Bootstrap
+# Surreal Estate
 
-React boilerplate project for Manchester Codes' projects.
+This is a React app that is similar to Zoopla or Right Move for house hunting.
 
-## Getting Started
+![surreal-estate](https://i.imgur.com/qhjScDN.jpg)
 
-### Clone down this repository (replace `<your_project_name>`:
+**Built Using:**
 
-```bash
-git clone git@github.com:MCRcodes/react-bootstrap.git <your_project_name>
-```
+- React.js
+- Node.js
+- Express.js
+- Mongoose
 
-### Install dependencies
+Running the app
 
-```bash
-npm i
-```
+To run this project you will need to clone it onto your local machine and install all dependencies. Navigate into the directory and install all dependencies by entering the following command on your terminal window:
 
-### Start up the application:
+npm install
 
-```bash
+From the directory enter:
+
 npm start
-```
 
-### Visit `localhost:8080` in your browser.
+Author
 
-You should see a **Hello World** message.
-
-### Change the rendered output
-
-You can change what is mounted to the DOM in `src/index.jsx`. 
-
-It might be a good idea to make an `App` component inside `App.jsx` (will likely handle your layout and routing), and to mount this to the DOM.
+Daniel Cross
